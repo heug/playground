@@ -1,3 +1,4 @@
 test:
   override:
+    - echo env
     - echo "foo" >> $CIRCLE_ARTIFACTS/foo
