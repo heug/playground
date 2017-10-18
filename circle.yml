@@ -4,7 +4,13 @@ machine:
     - mtr --report github.com
     - telnet github.com 22
 
+checkout:
+  pre:
+    - echo "bar"
+
 test:
+  pre:
+    - echo "test pre"
   override:
     - printenv
     - echo "foo" >> $CIRCLE_ARTIFACTS/foo
