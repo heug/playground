@@ -1,16 +1,19 @@
 machine:
   pre:
-    - sudo apt-get update && sudo apt-get install mtr
-    - mtr --report github.com
-    - telnet github.com 22
+    - echo "http.time.total.ghe:${TIME_TOTAL}|ms":
+        environment:
+          TIME_TOTAL: $(curl -s -w "%{time_total}\n" -I -o /dev/null google.com)
+    # - sudo apt-get update && sudo apt-get install mtr
+    # - mtr --report github.com
+    # - telnet github.com 22
 
 checkout:
   pre:
-    - echo "bar"
+    # - echo "bar"
 
 test:
   pre:
-    - echo "test pre"
+    # - echo "test pre"
   override:
-    - printenv
-    - echo "foo" >> $CIRCLE_ARTIFACTS/foo
+    # - printenv
+    # - echo "foo" >> $CIRCLE_ARTIFACTS/foo
