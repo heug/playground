@@ -1,6 +1,6 @@
 dependencies:
   pre: 
-    - mkdir -p ~/time_testing && echo "${CURRENT_TIME}: http.time.total.ghe:${TIME_TOTAL}|ms" >> "~/time_testing/'${CIRCLE_PROJECT_REPONAME}'_'${CIRCLE_BRANCH}'_'${CIRCLE_BUILD_NUM}'":
+    - mkdir -p ~/time_testing && echo "${CURRENT_TIME}: http.time.total.ghe:${TIME_TOTAL}|ms" >> ~/time_testing/data.txt:
         environment:
           TIME_TOTAL: $(curl -s -w '%{time_total}\n' -I -o /dev/null google.com)
           CURRENT_TIME: $(date)
