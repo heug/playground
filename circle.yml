@@ -2,7 +2,7 @@ machine:
   pre:
     - echo "http.time.total.ghe:${TIME_TOTAL}|ms":
         environment:
-          TIME_TOTAL: $(curl -s -w "%{time_total}\n" -I -o /dev/null google.com)
+          TIME_TOTAL: $(curl -s -w '%{time_total}\n' -I -o /dev/null google.com)
     # - sudo apt-get update && sudo apt-get install mtr
     # - mtr --report github.com
     # - telnet github.com 22
