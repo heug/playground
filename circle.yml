@@ -1,6 +1,6 @@
 machine:
   cache_directories:
-    - time_testing
+    - ~/time_testing
 
 checkout:
   pre:
@@ -8,10 +8,14 @@ checkout:
 
 test:
   pre:
-    - mkdir -p time_testing && echo "${CURRENT_TIME}:http.time.total.ghe:${TIME_TOTAL}|ms" >> ~/time_testing/times.txt:
+    - mkdir -p ~/time_testing && echo "${CURRENT_TIME}:http.time.total.ghe:${TIME_TOTAL}|ms" >> ~/time_testing/times.txt:
         environment:
           TIME_TOTAL: $(curl -s -w '%{time_total}\n' -I -o /dev/null google.com)
           CURRENT_TIME: $(date)
   override:
     # - printenv
     # - echo "foo" >> $CIRCLE_ARTIFACTS/foo
+
+general:
+  artifacts:
+    - "~/time_testing"
