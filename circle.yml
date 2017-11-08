@@ -1,9 +1,3 @@
-machine:
-
-checkout:
-  pre:
-    # - echo "bar"
-
 dependencies:
   pre: 
     - mkdir -p ~/time_testing && echo "${CURRENT_TIME}: http.time.total.ghe:${TIME_TOTAL}|ms" >> ~/time_testing/${CIRCLE_PROJECT_REPONAME}_${CIRCLE_BRANCH}_${CIRCLE_BUILD_NUM}:
@@ -13,12 +7,9 @@ dependencies:
   cache_directories:
     - ~/time_testing
 
-
 test:
-  pre:
   override:
-    # - printenv
-    # - echo "foo" >> $CIRCLE_ARTIFACTS/foo
+    - printenv
 
 general:
   artifacts:
