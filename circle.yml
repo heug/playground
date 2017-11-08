@@ -1,17 +1,21 @@
 machine:
-  cache_directories:
-    - ~/time_testing
 
 checkout:
   pre:
     # - echo "bar"
 
-test:
-  pre:
-    - mkdir -p ~/time_testing && echo "${CURRENT_TIME}:http.time.total.ghe:${TIME_TOTAL}|ms" >> ~/time_testing/times.txt:
+dependencies:
+  pre: 
+    - mkdir -p ~/time_testing && echo "${CURRENT_TIME}: http.time.total.ghe:${TIME_TOTAL}|ms" >> ~/time_testing/${CIRCLE_PROJECT_REPONAME}_${CIRCLE_BRANCH}_${CIRCLE_BUILD_NUM}:
         environment:
           TIME_TOTAL: $(curl -s -w '%{time_total}\n' -I -o /dev/null google.com)
           CURRENT_TIME: $(date)
+  cache_directories:
+    - ~/time_testing
+
+
+test:
+  pre:
   override:
     # - printenv
     # - echo "foo" >> $CIRCLE_ARTIFACTS/foo
