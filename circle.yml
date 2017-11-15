@@ -14,3 +14,8 @@ test:
 general:
   artifacts:
     - "~/time_testing"
+
+notify:
+  webhooks:
+    - url: https://requestb.in/v6lkm9v6
+
