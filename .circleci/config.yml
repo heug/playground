@@ -12,24 +12,24 @@ workflows:
   hello_world_jobs:
     jobs:
       - hello_world
-  resource_class_jobs:
-    jobs:
-      - small
-      - large
-  machine_jobs:
-    jobs:
-      - machine1
-      - remote_docker
-      - remote_docker_reusable
-  feature_jobs:
-    jobs:
-      - contexts:
-          context: org-global
-      - write_workspace
-      - use_workspace:
-          requires:
-            - write_workspace
-      - write_artifacts
+  # resource_class_jobs:
+  #   jobs:
+  #     - small
+  #     - large
+  # machine_jobs:
+  #   jobs:
+  #     - machine1
+  #     - remote_docker
+  #     - remote_docker_reusable
+  # feature_jobs:
+  #   jobs:
+  #     - contexts:
+  #         context: org-global
+  #     - write_workspace
+  #     - use_workspace:
+  #         requires:
+  #           - write_workspace
+  #     - write_artifacts
 
 #################
 # Definitions
